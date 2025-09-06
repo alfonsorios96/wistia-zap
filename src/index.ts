@@ -5,6 +5,8 @@ import packageJson from '../package.json' with { type: 'json' };
 import authentication from './authentication.js';
 import { befores, afters } from './middleware.js';
 
+import getPublish from './triggers/publish';
+
 export default defineApp({
   version: packageJson.version,
   platformVersion: zapier.version,
@@ -14,7 +16,9 @@ export default defineApp({
   afterResponse: [...afters],
 
   // Add your triggers here for them to show up!
-  triggers: {},
+  triggers: {
+    [getPublish.key]: getPublish
+  },
 
   // Add your creates here for them to show up!
   creates: {},
