@@ -19,15 +19,10 @@ const handleBadResponses = (response, z: ZObject, bundle: Bundle) => {
 // This function runs before every outbound request. You can have as many as you
 // need. They'll need to each be registered in your index.js file.
 const includeApiKey = (request, z: ZObject, bundle: Bundle) => {
-  if (bundle.authData.apiKey) {
-    // Use these lines to include the API key in the querystring
-    request.params = request.params || {};
-    request.params.api_key = bundle.authData.apiKey;
-
-    // If you want to include the API key in the header instead, uncomment this:
-    // request.headers.Authorization = bundle.authData.apiKey;
+  if (bundle.authData?.apiKey) {
+    request.headers = request.headers || {};
+    request.headers.Authorization = `Bearer ${bundle.authData.apiKey}`;
   }
-
   return request;
 };
 

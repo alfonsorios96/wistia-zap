@@ -2,10 +2,11 @@
   "name": "wistia",
   "version": "1.0.0",
   "description": "",
+  "main": "dist/index.js",
   "scripts": {
     "test": "npm run build && vitest --run",
     "clean": "rimraf ./dist ./build",
-    "build": "npm run clean && tsc",
+    "build": "npm run clean && tsc && zapier validate",
     "_zapier-build": "npm run build"
   },
   "dependencies": {
@@ -18,5 +19,5 @@
   },
   "private": true,
   "exports": "./dist/index.js",
-  "type": "module"
+  "type": "commonjs"
 }

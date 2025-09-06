@@ -1,11 +1,13 @@
 import zapier, { defineApp } from 'zapier-platform-core';
 
-import packageJson from '../package.json' with { type: 'json' };
+import authentication from './authentication';
+import { befores, afters } from './middleware';
 
-import authentication from './authentication.js';
-import { befores, afters } from './middleware.js';
+const packageJson = require('../package.json');
 
 import getPublish from './triggers/publish';
+
+import getProjects from './triggers/projects';
 
 export default defineApp({
   version: packageJson.version,
@@ -17,7 +19,8 @@ export default defineApp({
 
   // Add your triggers here for them to show up!
   triggers: {
-    [getPublish.key]: getPublish
+    [getPublish.key]: getPublish,
+    [getProjects.key]: getProjects
   },
 
   // Add your creates here for them to show up!
