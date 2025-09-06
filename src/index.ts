@@ -9,6 +9,8 @@ import getPublish from './triggers/publish';
 
 import getProjects from './triggers/projects';
 
+import createUpload from './creates/upload';
+
 export default defineApp({
   version: packageJson.version,
   platformVersion: zapier.version,
@@ -24,5 +26,7 @@ export default defineApp({
   },
 
   // Add your creates here for them to show up!
-  creates: {},
+  creates: {
+    [createUpload.key]: createUpload
+  },
 });
