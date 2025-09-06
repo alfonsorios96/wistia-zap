@@ -42,5 +42,5 @@ Website Dashboard to find your API Key. Use subdomain instead of tenant.`, requi
   // be `{{X}}`. This can also be a function that returns a label. That function has
   // the standard args `(z: ZObject, bundle: Bundle)` and data returned from the
   // test can be accessed in `bundle.inputData.X`.
-  connectionLabel: '{{json.username}}',
+  connectionLabel: '{{name}}',
 } satisfies Authentication;
